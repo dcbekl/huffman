@@ -25,7 +25,8 @@ void writeYS(string inputPath, HuffmanTree HT, HuffmanCode HC, int n){
     }
 
     string path = FILEPATH + ".huf";
-    ofstream of(path, ios::out);
+    
+    ofstream of(path, ios::out | ios::binary);;
 
     if(!of.is_open()){ //
 
@@ -38,23 +39,24 @@ void writeYS(string inputPath, HuffmanTree HT, HuffmanCode HC, int n){
     int m;
 
     clearQueue(queue);
-    while(rf.good()){
-
-        buf = rf.get();
+    buf = rf.get();
+    while(!rf.eof()){
 
         m = isExist(HT, buf, n);
 
         //如果是中文
         if(!m){
-            of << buf;
+
+            SUM++;
+            of.write((char *)&buf, sizeof(char));
+            buf = rf.get();
             continue;
         }
         
         //如果不是中文
         if(m){   
 
-            // cout << HT[m].data << "(" << HC[m][0] << ")" ;
-
+            SUM ++;
             for(int i = 0; i < strlen(HC[m]); i++){
 
                 enQuene(queue, HC[m][i]);
@@ -62,21 +64,24 @@ void writeYS(string inputPath, HuffmanTree HT, HuffmanCode HC, int n){
 
             //队列中数据量不足，可能出现读不出8位
             if(queue->size < 10){ 
+                
+                buf = rf.get();
                 continue;
             }
 
             buf = E_Out(queue);
         }
-        
-        of << buf;
+
+        of.write((char *)&buf, sizeof(char));
+
+        buf = rf.get();
     }
 
     //最后不够八位，后位补零
     while(queue->size > 0){
 
         buf = E_Out(queue);
-        // cout << "\"" << int(buf) << "\"";
-        of << buf;
+        of.write((char *)&buf, sizeof(char));
     }
 
     rf.close();

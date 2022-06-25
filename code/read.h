@@ -15,8 +15,6 @@ bool TongJi(string path, int (&arr)[size]){ //数组长度
     ifstream f;
     f.open(path, ios::in);
 
-    cout << "[" << path << endl;
-
     if(!f.is_open()){
 
         cout << "File open failed!!!";
@@ -113,7 +111,7 @@ string getFilePath(string path){
 }
 
 
-//字符转成八位二进制
+//字符转成八位二进制,然后入队
 void E_In(seqQueue *queue, char ch){
 
     int sum = int(ch);
@@ -141,6 +139,7 @@ char getC(seqQueue *queue){
     for(i = 0; i < 20; i++){
 
         ch[i] = outQuene(queue);
+        cout << ch[i];
 
         res = '\0';
         for(j = 1; j < HCnum; j++){     
@@ -166,7 +165,6 @@ char getC(seqQueue *queue){
 
     ch[i+1] = '\0';
 
-    // cout <<  "<" << res << " " << ch << ">";
     return res;
 }
 #endif

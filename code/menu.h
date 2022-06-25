@@ -147,7 +147,7 @@ void JYS(){
     cin >> path;
 
     ifstream inf;
-    inf.open(path, ios::out);
+    inf.open(path, ios::out | ios::binary);
 
     if(!inf.is_open()){
 
@@ -156,23 +156,20 @@ void JYS(){
         return;
     } 
 
-    string outpath = getFilePath(path) + "2" + ".txt";
+    string outpath = getFilePath(path) + ".txt";
 
     ofstream of;
     of.open(outpath, ios::out);
 
     clearQueue(queue);  //清空队列
     char buf;
-    int sum = 0, ss = 0;
 
-    buf = inf.get();ss++;
+    inf.read((char *)&buf, sizeof(buf));
 
     //正式读取文件
     while(!inf.eof()){
 
         if(int(buf) >= -128 && int(buf) <= 127){
-            
-            sum ++;
 
             buf = (buf+256) % 256;
 
@@ -182,31 +179,29 @@ void JYS(){
 
                 buf = getC(queue);
 
-                sum--;
-
+                SUM --;
                 of << buf;
             }
 
         }else{  //中文，直接写入
 
+            SUM--;
             of << buf;
         }
 
-        buf = inf.get();ss++;
+        inf.read((char *)&buf, sizeof(buf));
     }
 
-    // while(sum > 0){
-    while(queue->size > 0){
+    while(queue->size > 0 && SUM > 0){
 
         buf = getC(queue);
 
-        sum--;
+        SUM--;
 
         of << buf;
     }
 
-    // cout << "共读入：" << ss << endl;
-
+    cout << "文件解压缩成功！" << endl;
     of.close();
     inf.close();
 }

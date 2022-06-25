@@ -6,7 +6,8 @@
         "system_error": "cpp",
         "ostream": "cpp",
         "xiosbase": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "string": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

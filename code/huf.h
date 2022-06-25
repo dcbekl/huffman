@@ -26,6 +26,7 @@ typedef struct sQueueNode
     int size = 0;
 }seqQueue;
 
+int SUM = 0;
 seqQueue *queue = new seqQueue;
 //入队
 void enQuene(seqQueue *queue, char x){
@@ -81,7 +82,6 @@ void Menu(){
     cout << "5.解压缩文件" << endl;
     cout << "6.退出系统" << endl;
     cout << ">> ";
-
 }
 
 #endif

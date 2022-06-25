@@ -115,14 +115,12 @@ void Clear(T H, int n){
 	
     T u;
 
-	cout << '\n' << n;
-
 	for(int i = 1; i < n; i++){
 	
 		u = H;
 		H++;
 
-		if(u==NULL) return;
+		if(u==NULL || H == NULL) continue;
 		
 		if(u != NULL)
 			delete u;
