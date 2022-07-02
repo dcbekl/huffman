@@ -32,8 +32,8 @@ void YS(){
         return;
     }    
 
-    Clear(HT, HTnum);
-    Clear(HC, HCnum);
+    clearHT(HT);
+    clearHC(HC);
 
     CreateHuff(HT, PL);
 
@@ -94,7 +94,10 @@ void printTable(){
     int k = 0;
     for (int i = 1; i <= PL[SIZE]; i++) //打印哈夫曼编码
 	{
-		printf("数据%c的编码为:%s\n", HT[i].data, HC[i]);
+        if(HT[i].data != '\n')
+		    printf("数据%c的编码为:%s\n", HT[i].data, HC[i]);
+        else
+            printf("数据\\n的编码为:%s\n", HC[i]);
         k++;
 	}
 
@@ -117,11 +120,6 @@ void printTable(){
 	}
 
     of.close();
-
-    // for(int i = 1; i < HCnum; i++){
-
-    //     cout << strlen(HC[i]) << endl;
-    // }
 }
 
 //计算带权路径
@@ -209,8 +207,8 @@ void JYS(){
 //退出系统
 void Exit(){
 
-    Clear(HT, HTnum);
-    Clear(HC, HCnum);
+    clearHT(HT);
+    clearHC(HC);
     cout << "成功退出系统！" << endl;
     system("pause");
     exit(0);

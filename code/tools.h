@@ -108,23 +108,16 @@ void HuffCoding(HuffmanTree& HT, HuffmanCode& HC, int n)
 	delete[] code; //ÊÍ·Å¸¨Öú¿Õ¼ä
 }
 
-template<class T>
-void Clear(T H, int n){
-	if(n == 0)
-		return;
-	
-    T u;
+void clearHT(HuffmanTree HT){
 
-	for(int i = 1; i < n; i++){
-	
-		u = H;
-		H++;
-
-		if(u==NULL || H == NULL) continue;
-		
-		if(u != NULL)
-			delete u;
-	}
+	free(HT);
 }
 
+void clearHC(HuffmanCode HC){
+
+	for(int i = 1; i < HCnum; i++){
+
+		free(HC[i]);
+	}
+}
 #endif

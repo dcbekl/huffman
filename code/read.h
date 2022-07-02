@@ -6,7 +6,6 @@
 #include <fstream>
 using namespace std;
 
-string getFileName(string path);
 string getFilePath(string path);
 
 template<size_t size>       
@@ -26,7 +25,6 @@ bool TongJi(string path, int (&arr)[size]){ //数组长度
     for(int i = 0; i < SIZE+2; i++)
         PL[i] = 0;
 
-    FILENAME = getFileName(path);
     FILEPATH = getFilePath(path);
 
     char buf;

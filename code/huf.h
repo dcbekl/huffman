@@ -16,7 +16,7 @@ typedef struct HTNode
 
 typedef char **HuffmanCode; //字符指针数组中存储的元素类型
 
-typedef struct sQueueNode
+typedef struct QueueNode
 {
     char data[QUEUEMAXLEN];
 
