@@ -52,35 +52,6 @@ bool TongJi(string path, int (&arr)[size]){ //数组长度
     return true;
 }
 
-//获取文件名
-string getFileName(string path){
-
-    int font = 0, rear = 0;
-    for(int i = path.size()-1; i >= 0; i--){
-
-        if(path[i] == '.'){
-            rear = i-1;
-        }
-
-        if(path[i] == '\\' || path[i] == '/'){
-            font = i+1;
-            break;
-        }
-    }
-
-    int u = rear - font + 1;
-    char ch[u+1]; 
-
-    for(int i = 0; i < u; i++){
-
-        ch[i] = path[font++];
-    }
-
-    string fn = ch;
-
-    return fn;
-}
-
 //获取路径
 string getFilePath(string path){
 

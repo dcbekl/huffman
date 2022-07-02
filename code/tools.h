@@ -57,7 +57,8 @@ void CreateHuff(HuffmanTree& HT, int (&arr)[size]){
     for (int i = 0; i < size-2; i++){
 
 		if(arr[i] != 0){
-			HT[t].weight = 1.0 * arr[i] / arr[size - 1];
+			// HT[t].weight = 1.0 * arr[i] / arr[size - 1];
+			HT[t].weight = arr[i];
 			HT[t].data = char(i);
 			t++;
 		}    	

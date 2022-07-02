@@ -55,36 +55,32 @@ void printTree()
     //控制台输出
     int m = PL[SIZE] * 2 - 1;
 	printf("哈夫曼树为:>\n");
-	printf("下标   权值     父结点   左孩子   右孩子\n");
+	printf("下标   权值    父结点   左孩子   右孩子    数据\n");
     for (int i = 1; i <= m; i++)
 	{
-		printf("%-4d   %-6.7lf   %-6d   %-6d   %-6d    %c", i, HT[i].weight, HT[i].parent, HT[i].lc, HT[i].rc, HT[i].data);
         if(HT[i].data != '\n')
-            cout << endl;
+		    printf("%-4d   %-6d   %-6d   %-6d   %-6d    %c\n", i, HT[i].weight, HT[i].parent, HT[i].lc, HT[i].rc, HT[i].data);
+        else
+            printf("%-4d   %-6d   %-6d   %-6d   %-6d    \\n\n", i, HT[i].weight, HT[i].parent, HT[i].lc, HT[i].rc);
 	}
 	printf("\n");
 
-    //写入文件
-    ofstream of;
-    string treePath = FILEPATH + ".tree";
-    
-    of.open(treePath, ios::out);
+    // //写入文件
+    // ofstream of;
+    // string treePath = FILEPATH + ".tree";
+    // of.open(treePath, ios::out);
+    // if(!of.is_open()){
+    //     cout << "文件输出失败！" << endl;
+    //     return;
+    // }
+    // for (int i = 1; i <= m; i++)
+	// {
+    //     of << setiosflags(ios::left);   //左对齐
+    //     of << setw(4) << i << setw(14) <<  setprecision(7) << HT[i].weight << setw(6) << HT[i].parent << setw(6) << HT[i].lc
+    //     << setw(6) << HT[i].rc << setw(6) << HT[i].data << endl;
+	// }
+    // of.close();
 
-    if(!of.is_open()){
-        cout << "文件输出失败！" << endl;
-        return;
-    }
-
-    for (int i = 1; i <= m; i++)
-	{
-        of << setiosflags(ios::left);   //左对齐
-
-        of << setw(4) << i << setw(14) <<  setprecision(7) << HT[i].weight << setw(6) << HT[i].parent << setw(6) << HT[i].lc
-        << setw(6) << HT[i].rc << setw(6) << HT[i].data << endl;
-
-	}
-
-    of.close();
 }
 
 //打印哈夫曼表
@@ -101,25 +97,22 @@ void printTable(){
         k++;
 	}
 
-    //写入文件
-    ofstream of;
-    string treePath = FILEPATH + ".table";
-    
-    of.open(treePath, ios::out);
+    // //写入文件
+//     ofstream of;
+//     string treePath = FILEPATH + ".table";  
+//     of.open(treePath, ios::out);
+//     if(!of.is_open()){
+//         cout << "文件输出失败！" << endl;
+//         return;
+//     }
+//     k = 0;
+//    for (int i = 1; i <= PL[SIZE]; i++) //打印哈夫曼编码
+// 	{
+// 		of << "数据" << HT[i].data << "的编码为:" << HC[i] << endl;
+//         k++;
+// 	}
+//     of.close();
 
-    if(!of.is_open()){
-        cout << "文件输出失败！" << endl;
-        return;
-    }
-
-    k = 0;
-   for (int i = 1; i <= PL[SIZE]; i++) //打印哈夫曼编码
-	{
-		of << "数据" << HT[i].data << "的编码为:" << HC[i] << endl;
-        k++;
-	}
-
-    of.close();
 }
 
 //计算带权路径
@@ -133,6 +126,10 @@ void printWPL(){
     cout << "带权路径和：" << WPL << endl;
 }
 
+//计算文本文件的压缩比
+void compressRate(){
+    cout << "压缩比：" << endl;
+}
 //解压缩
 void JYS(){
 

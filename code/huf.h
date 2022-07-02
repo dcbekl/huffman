@@ -8,7 +8,7 @@ using namespace std;
 typedef struct HTNode
 {
     char data;  //数据
-    double weight; //权值
+    int weight; //权值
     int parent; //父节点
     int lc, rc; //左右子节点
     int depth;
@@ -79,8 +79,9 @@ void Menu(){
     cout << "2.打印哈夫曼树" << endl;
     cout << "3.打印哈夫曼表" << endl;
     cout << "4.计算带权路径长度WPL" << endl;
-    cout << "5.解压缩文件" << endl;
-    cout << "6.退出系统" << endl;
+    cout << "5.计算文本的压缩比" << endl;
+    cout << "6.解压缩文件" << endl;
+    cout << "7.退出系统" << endl;
     cout << ">> ";
 }
 
