@@ -128,7 +128,7 @@ void printWPL(){
 
 //计算文本文件的压缩比
 void compressRate(){
-    cout << "压缩比：" << endl;
+    cout << "压缩比：" << 1.0 * YSUM / SUM <<  endl;
 }
 //解压缩
 void JYS(){

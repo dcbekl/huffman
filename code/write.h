@@ -34,6 +34,8 @@ void writeYS(string inputPath, HuffmanTree HT, HuffmanCode HC, int n){
         return;
     }
 
+    SUM = 0;
+    YSUM = 0;
     char buf;
     string line;
     int m;
@@ -104,12 +106,10 @@ char E_Out(seqQueue *queue){
         sum += ch - '0';
     }
 
-    // cout << "{" << sum << "}";
-
     ch = char(sum);
 
-    // cout << "[" << int(ch) << "]";
-    
+    YSUM ++;
+
     return char(sum);
 }
 

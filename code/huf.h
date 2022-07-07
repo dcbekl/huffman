@@ -27,6 +27,7 @@ typedef struct QueueNode
 }seqQueue;
 
 int SUM = 0;
+int YSUM = 0;
 seqQueue *queue = new seqQueue;
 //入队
 void enQuene(seqQueue *queue, char x){
